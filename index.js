@@ -118,3 +118,42 @@ function finalGrade (exam, projects) {
   if(exam > 50 & projects >= 2) return 75;
   return 0;
 }
+
+// Rule of Divisibility by 13
+// https://www.codewars.com/kata/a-rule-of-divisibility-by-13/javascript
+// When you divide the successive powers of 10 by 13 you get the following remainders of the integer divisions:
+// [1, 10, 9, 12, 3, 4]
+// Then the whole pattern repeats.
+// Hence the following method: 
+// Multiply the right most digit of the number with the left most number in the sequence shown above, 
+// the second right most digit to the second left most digit of the number in the sequence. 
+// The cycle goes on and you sum all these products. 
+// Repeat this process until the sequence of sums is stationary.
+
+function multiplySeries(n) {
+  var numberArray = [1, 10, 9, 12, 3, 4]
+  var stringNumber = n.toString()
+  // Starts at the end of the number provided, and iterates backward through the string
+  let count = 0
+  let total = 0
+  for ((i = stringNumber.length -1); i >= 0; i--){
+    total += stringNumber[i] * numberArray[count]
+    count++
+    if (count > 5) {
+    count = 0
+    }
+    console.log(count)
+  }
+  return total
+}
+
+function thirt(n) {
+// Do this function until total = n
+  let newNumber = multiplySeries(n)
+  
+  while (newNumber !== multiplySeries(newNumber)) {
+  newNumber = multiplySeries(newNumber)
+  }
+  return newNumber
+  
+}
