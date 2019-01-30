@@ -228,3 +228,12 @@ function findEvenIndex(arr)
   }
   return -1;
 }
+
+
+// Array.diff ***
+// https://www.codewars.com/kata/array-dot-diff/javascript
+function array_diff(a, b) {
+  return a.filter(function(n){
+   return b.includes(n) === false;
+ });
+}
