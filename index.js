@@ -230,7 +230,7 @@ function findEvenIndex(arr)
 }
 
 
-// Array.diff ***
+// Array.diff
 // https://www.codewars.com/kata/array-dot-diff/javascript
 function array_diff(a, b) {
   return a.filter(function(n){
