@@ -202,6 +202,7 @@ function scramble(str1, str2) {
 // Equal Sides of an array Kata
 // https://www.codewars.com/kata/equal-sides-of-an-array/train/javascript
 
+// Long solution
 function findEvenIndex(arr) {
   var sum = 0,
     leftSum = 0;
@@ -214,6 +215,16 @@ function findEvenIndex(arr) {
       return i;
     }
     leftSum += arr[i];
+  }
+  return -1;
+}
+// Better solution
+function findEvenIndex(arr)
+{
+  for(var i=1; i<arr.length-1; i++) {
+    if(arr.slice(0, i).reduce((a, b) =>  a+b) === arr.slice(i+1).reduce((a, b) =>  a+b)) {
+      return i;
+    }
   }
   return -1;
 }
