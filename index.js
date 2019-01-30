@@ -85,3 +85,26 @@ function biteMeMonkey(monkObj, clientObj, terrain) {
     return "Everything's good, I'll see you in the office on Monday.";
   }
 }
+
+// Closest Elevator Challenge
+// https://www.codewars.com/kata/closest-elevator/javascript
+
+function elevator(left, right, call) {
+  // Handles normal cases
+  var r = call - right;
+  var l = call - left;
+
+  // Handles edge cases
+  if (r <= -1) {
+    r = r * -1;
+  }
+  if (l <= -1) {
+    l = l * -1;
+  }
+
+  if (l < r) {
+    return "left";
+  } else {
+    return "right";
+  }
+}
