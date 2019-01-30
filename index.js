@@ -157,3 +157,21 @@ function thirt(n) {
   return newNumber
   
 }
+
+
+// Not Prime Numbers
+// https://www.codewars.com/kata/not-prime-numbers/solutions/javascript
+const notPrimes = (a, b) => {
+  const result = [];
+  for (let i = a; i < b; i++)
+    if (String(i).split``.every(e => isPrime(e)) && !isPrime(i)) 
+      result.push(i);
+  return result;
+}
+
+const isPrime = n => {
+  for (let i = 2, s = Math.sqrt(n); i <= s; i++)
+    if (n % i === 0) 
+      return false; 
+  return n > 1;
+}
