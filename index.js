@@ -1,4 +1,4 @@
-// Working through CodeWars challenges 
+// Working through CodeWars challenges
 // Recording the answers to the various solutions for practice
 
 // Maximum Multiple
@@ -12,33 +12,32 @@
 
 // N is greater than 0.
 
-function maxMultiple(divisor, bound){
-    return bound-bound%divisor
-  }
-
+function maxMultiple(divisor, bound) {
+  return bound - (bound % divisor);
+}
 
 // Grasshopper Summation
 // Summation
-// Write a program that finds the summation of every number from 1 to num. 
+// Write a program that finds the summation of every number from 1 to num.
 // The number will always be a positive integer greater than 0.
 
-var summation = function (num) {
+var summation = function(num) {
   let result = 0;
   for (var i = 1; i <= num; i++) {
     result += i;
   }
-  
+
   return result;
-}
+};
 
 // Total Number of Points - Incomplete
-// Our football team finished the championship. 
-// The result of each match look like "x:y". 
+// Our football team finished the championship.
+// The result of each match look like "x:y".
 // Results of all matches are recorded in the array.
 
 // For example: ["3:1", "2:2", "0:1", ...]
 
-// Write a function that takes such list and counts the points of our team in the championship. 
+// Write a function that takes such list and counts the points of our team in the championship.
 // Rules for counting points for each match:
 
 // if x>y - 3 points
@@ -50,14 +49,39 @@ var summation = function (num) {
 // 0 <= x <= 4
 // 0 <= y <= 4
 
-
 // Count Sheep
 // Task:
-// Given a non-negative integer, 3 for example, return a string with a murmur: 
+// Given a non-negative integer, 3 for example, return a string with a murmur:
 // "1 sheep...2 sheep...3 sheep...". Input will always be valid, i.e. no negative integers.
 
-var countSheep = function (num){
+var countSheep = function(num) {
   let str = "";
-  for(let i = 1; i <= num; i++) { str+= `${i} sheep...`; }
+  for (let i = 1; i <= num; i++) {
+    str += `${i} sheep...`;
+  }
   return str;
+};
+
+// Monkey Challenge - Hit Points
+// https://www.codewars.com/kata/tails-of-the-high-seas/javascript
+function biteMeMonkey(monkObj, clientObj, terrain) {
+  monkObj.hitPoints +=
+    monkObj.orangutans * 5 + monkObj.chimpanzees * 3 + monkObj.gorillas * 9;
+  clientObj.hitPoints += clientObj.crew;
+
+  if (terrain === "island") {
+    clientObj.hitPoints += 20;
+  } else if (terrain === "sea") {
+    monkObj.hitPoints += 10;
+  }
+
+  if (monkObj.janeReporting4Duty === true) {
+    monkObj.hitPoints *= monkObj.chimpanzees / 2;
+  }
+
+  if (monkObj.hitPoints >= clientObj.hitPoints) {
+    return "Abandon ship! Save your own skin and blame it on the 'modestly-sized' yacht!";
+  } else {
+    return "Everything's good, I'll see you in the office on Monday.";
+  }
 }
