@@ -112,10 +112,10 @@ function elevator(left, right, call) {
 // Student grade
 // https://www.codewars.com/kata/students-final-grade/solutions/javascript
 
-function finalGrade (exam, projects) {
-  if(exam > 90 || projects > 10) return 100;
-  if(exam > 75 & projects >= 5) return 90;
-  if(exam > 50 & projects >= 2) return 75;
+function finalGrade(exam, projects) {
+  if (exam > 90 || projects > 10) return 100;
+  if ((exam > 75) & (projects >= 5)) return 90;
+  if ((exam > 50) & (projects >= 2)) return 75;
   return 0;
 }
 
@@ -124,83 +124,96 @@ function finalGrade (exam, projects) {
 // When you divide the successive powers of 10 by 13 you get the following remainders of the integer divisions:
 // [1, 10, 9, 12, 3, 4]
 // Then the whole pattern repeats.
-// Hence the following method: 
-// Multiply the right most digit of the number with the left most number in the sequence shown above, 
-// the second right most digit to the second left most digit of the number in the sequence. 
-// The cycle goes on and you sum all these products. 
+// Hence the following method:
+// Multiply the right most digit of the number with the left most number in the sequence shown above,
+// the second right most digit to the second left most digit of the number in the sequence.
+// The cycle goes on and you sum all these products.
 // Repeat this process until the sequence of sums is stationary.
 
 function multiplySeries(n) {
-  var numberArray = [1, 10, 9, 12, 3, 4]
-  var stringNumber = n.toString()
+  var numberArray = [1, 10, 9, 12, 3, 4];
+  var stringNumber = n.toString();
   // Starts at the end of the number provided, and iterates backward through the string
-  let count = 0
-  let total = 0
-  for ((i = stringNumber.length -1); i >= 0; i--){
-    total += stringNumber[i] * numberArray[count]
-    count++
+  let count = 0;
+  let total = 0;
+  for (i = stringNumber.length - 1; i >= 0; i--) {
+    total += stringNumber[i] * numberArray[count];
+    count++;
     if (count > 5) {
-    count = 0
+      count = 0;
     }
-    console.log(count)
+    console.log(count);
   }
-  return total
+  return total;
 }
 
 function thirt(n) {
-// Do this function until total = n
-  let newNumber = multiplySeries(n)
-  
-  while (newNumber !== multiplySeries(newNumber)) {
-  newNumber = multiplySeries(newNumber)
-  }
-  return newNumber
-  
-}
+  // Do this function until total = n
+  let newNumber = multiplySeries(n);
 
+  while (newNumber !== multiplySeries(newNumber)) {
+    newNumber = multiplySeries(newNumber);
+  }
+  return newNumber;
+}
 
 // Not Prime Numbers
 // https://www.codewars.com/kata/not-prime-numbers/solutions/javascript
 const notPrimes = (a, b) => {
   const result = [];
   for (let i = a; i < b; i++)
-    if (String(i).split``.every(e => isPrime(e)) && !isPrime(i)) 
-      result.push(i);
+    if (String(i).split``.every(e => isPrime(e)) && !isPrime(i)) result.push(i);
   return result;
-}
+};
 
 const isPrime = n => {
-  for (let i = 2, s = Math.sqrt(n); i <= s; i++)
-    if (n % i === 0) 
-      return false; 
+  for (let i = 2, s = Math.sqrt(n); i <= s; i++) if (n % i === 0) return false;
   return n > 1;
-}
-
+};
 
 // Scramblies 5kyu
 // https://www.codewars.com/kata/55c04b4cc56a697bb0000048/train/javascript
 
 function scramble(str1, str2) {
-  var obj1={};
-  var obj2={};
-  for(var i=0; i<str1.length; i++){
-    if(!obj1[str1[i]]){
-      obj1[str1[i]]=1;
-    }else{
+  var obj1 = {};
+  var obj2 = {};
+  for (var i = 0; i < str1.length; i++) {
+    if (!obj1[str1[i]]) {
+      obj1[str1[i]] = 1;
+    } else {
       obj1[str1[i]]++;
     }
   }
-  for(var j=0; j<str2.length; j++){
-    if(!obj2[str2[j]]){
-      obj2[str2[j]]=1;
-    }else{
+  for (var j = 0; j < str2.length; j++) {
+    if (!obj2[str2[j]]) {
+      obj2[str2[j]] = 1;
+    } else {
       obj2[str2[j]]++;
     }
   }
-  for(var key in obj2){
-    if(!obj1[key]||obj1[key]<obj2[key]){
+  for (var key in obj2) {
+    if (!obj1[key] || obj1[key] < obj2[key]) {
       return false;
     }
   }
   return true;
+}
+
+// Equal Sides of an array Kata
+// https://www.codewars.com/kata/equal-sides-of-an-array/train/javascript
+
+function findEvenIndex(arr) {
+  var sum = 0,
+    leftSum = 0;
+  for (var i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  for (var i = 0; i < arr.length; i++) {
+    sum -= arr[i];
+    if (leftSum === sum) {
+      return i;
+    }
+    leftSum += arr[i];
+  }
+  return -1;
 }
